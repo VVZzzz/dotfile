@@ -6,7 +6,7 @@ set nocompatible 	" 关闭兼容模式
 
 " Tab and Indent
 set tabstop=4 		" 设置Tab长度为4空格
-set shiftwidth=4 	" 设置自动缩进长度为4空格
+"set shiftwidth=4 	" 设置自动缩进长度为4空格
 set autoindent 		" 继承前一行的缩进方式，适用于多行注释
 set smartindent		" 根据文件中其他地方的缩进空格个数来确定一个 tab 是多少个空格
 set wildmenu    	"按TAB键时命令行自动补齐"
@@ -24,6 +24,7 @@ set nu 				" 设置行号
 set showmode  		" 显示当前模式
 set t_Co=256  		" If under tty, use 256
 set ruler			"显示当前光标位置"
+set clipboard+=unnamed  " 使用系统粘贴板
 
 " 在某些情况下,退格键backspace不管用"
 "
@@ -118,12 +119,12 @@ Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'flazz/vim-colorschemes'
 
 " YouCompleteMe
-Plugin 'Valloric/YouCompleteMe'
+" Plugin 'Valloric/YouCompleteMe'
 
 " Go
-Plugin 'fatih/vim-go'
-Plugin 'SirVer/ultisnips'
-Plugin 'AndrewRadev/splitjoin.vim'
+" Plugin 'fatih/vim-go'
+" Plugin 'SirVer/ultisnips'
+" Plugin 'AndrewRadev/splitjoin.vim'
 
 " Vim-Airline"
 Plugin 'vim-airline/vim-airline'
@@ -198,75 +199,75 @@ let g:NERDTreeGitStatusIndicatorMapCustom = {
                 \ 'Unknown'   :'?',
                 \ }
 
-"==============================================================================
-""  vim-go 插件
-"==============================================================================
-" GoVim中GoBuild的quickfix窗口跳转
-map <Leader>o :copen<CR>
-map <Leader>n :cnext<CR>
-map <Leader>m :cprevious<CR>
-map <Leader>a :cclose<CR>
+""==============================================================================
+"""  vim-go 插件
+""==============================================================================
+"" GoVim中GoBuild的quickfix窗口跳转
+"map <Leader>o :copen<CR>
+"map <Leader>n :cnext<CR>
+"map <Leader>m :cprevious<CR>
+"map <Leader>a :cclose<CR>
+"
+"" locationlist窗口跳转
+"map <Leader>lo :lopen<CR>
+"map <Leader>ln :lnext<CR>
+"map <Leader>lm :lprevious<CR>
+"map <Leader>la :lclose<CR>
+"" 自动保存进行goimports"
+"let g:go_fmt_command = "goimports"
+"" snake_case or camelcase"
+"let g:go_addtags_transform = "camelcase"
+"" 只是用quickfix窗口"
+"" let g:go_list_type="quickfix"
+"" 加一些高亮"
+"let g:go_version_warning = 1
+"let g:go_highlight_types = 1
+"let g:go_highlight_fields = 1
+"let g:go_highlight_functions = 1
+"let g:go_highlight_function_calls = 1
+"let g:go_highlight_operators = 1
+"let g:go_highlight_extra_types = 1
+"let g:go_highlight_methods = 1
+"let g:go_highlight_generate_tags = 1
 
-" locationlist窗口跳转
-map <Leader>lo :lopen<CR>
-map <Leader>ln :lnext<CR>
-map <Leader>lm :lprevious<CR>
-map <Leader>la :lclose<CR>
-" 自动保存进行goimports"
-let g:go_fmt_command = "goimports"
-" snake_case or camelcase"
-let g:go_addtags_transform = "camelcase"
-" 只是用quickfix窗口"
-" let g:go_list_type="quickfix"
-" 加一些高亮"
-let g:go_version_warning = 1
-let g:go_highlight_types = 1
-let g:go_highlight_fields = 1
-let g:go_highlight_functions = 1
-let g:go_highlight_function_calls = 1
-let g:go_highlight_operators = 1
-let g:go_highlight_extra_types = 1
-let g:go_highlight_methods = 1
-let g:go_highlight_generate_tags = 1
-
-"==============================================================================
-""  YCM 插件
-"==============================================================================
-" LocationList窗口操作
-""map <Leader>o :copen<CR>
-""map <Leader>n :cnext<CR>
-""map <Leader>m :cprevious<CR>
-""map <Leader>a :cclose<CR>
-
-"打开Symbol Search窗口，退出窗口使用C-w w"
-nmap <leader>yfw <Plug>(YCMFindSymbolInWorkspace)
-nmap <leader>yfd <Plug>(YCMFindSymbolInDocument)
-
-" 代码跳转"
-nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
-nnoremap <leader>jdf :YcmCompleter GoToDefinition<CR>
-nnoremap <leader>jdc :YcmCompleter GoToDeclaration<CR>
-nnoremap <leader>st :YcmCompleter GetType<CR>
-
-" 显示当前文件所有诊断信息"
-nmap <F4> :YcmDiags<CR>
-
-" 几个重要的默认快捷键"
-"let g:ycm_key_list_select_completion = ['<TAB>', '<Down>']
-"let g:ycm_key_list_previous_completion = ['<S-TAB>', '<Up>']
-
-" YCM白名单
-let g:ycm_filetype_whitelist = { 
-			\ "c":1,
-			\ "cpp":1, 
-			\ "objc":1,
-			\ "sh":1,
-			\ "zsh":1,
-			\ "zimbu":1,
-			\ "go":1,
-			\ "mod":1,
-			\ }
-
+""==============================================================================
+"""  YCM 插件
+""==============================================================================
+"" LocationList窗口操作
+"""map <Leader>o :copen<CR>
+"""map <Leader>n :cnext<CR>
+"""map <Leader>m :cprevious<CR>
+"""map <Leader>a :cclose<CR>
+"
+""打开Symbol Search窗口，退出窗口使用C-w w"
+"nmap <leader>yfw <Plug>(YCMFindSymbolInWorkspace)
+"nmap <leader>yfd <Plug>(YCMFindSymbolInDocument)
+"
+"" 代码跳转"
+"nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
+"nnoremap <leader>jdf :YcmCompleter GoToDefinition<CR>
+"nnoremap <leader>jdc :YcmCompleter GoToDeclaration<CR>
+"nnoremap <leader>st :YcmCompleter GetType<CR>
+"
+"" 显示当前文件所有诊断信息"
+"nmap <F4> :YcmDiags<CR>
+"
+"" 几个重要的默认快捷键"
+""let g:ycm_key_list_select_completion = ['<TAB>', '<Down>']
+""let g:ycm_key_list_previous_completion = ['<S-TAB>', '<Up>']
+"
+"" YCM白名单
+"let g:ycm_filetype_whitelist = { 
+"			\ "c":1,
+"			\ "cpp":1, 
+"			\ "objc":1,
+"			\ "sh":1,
+"			\ "zsh":1,
+"			\ "zimbu":1,
+"			\ "go":1,
+"			\ "mod":1,
+"			\ }
+"
 "==============================================================================
 ""  UltiSnips 插件
 "==============================================================================

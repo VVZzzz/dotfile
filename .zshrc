@@ -1,21 +1,10 @@
-# GOPROXY
-export GO111MODULE=on
-export GOPROXY=https://goproxy.cn
-
-# GOPATH
-export GOROOT=/usr/local/go
-export GOPATH=/home/runhan/go
-export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
-
-# Http Proxy
-# export http_proxy="http://192.168.37.1:1082"
-# export https_proxy="https://192.168.37.1:1082"
-
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
+source ~/.bashrc
+
 # Path to your oh-my-zsh installation.
-export ZSH="/home/runhan/.oh-my-zsh"
+export ZSH=$HOME/.oh-my-zsh
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -58,8 +47,6 @@ ZSH_THEME="robbyrussell"
 # ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
-# Caution: this setting can cause issues with multiline prompts (zsh 5.7.1 and newer seem to work)
-# See https://github.com/ohmyzsh/ohmyzsh/issues/5765
 # COMPLETION_WAITING_DOTS="true"
 
 # Uncomment the following line if you want to disable marking untracked files
@@ -84,18 +71,19 @@ ZSH_THEME="robbyrussell"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-git
-z
-safe-paste
-gitignore
-git-open
-zsh-autosuggestions
-zsh-syntax-highlighting
+	git
+        z
+        safe-paste
+        gitignore
+        git-open
+	zsh-autosuggestions
+	zsh-syntax-highlighting
 )
 
 source $ZSH/oh-my-zsh.sh
-source ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh 
-source ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 
+source $ZSH/custom/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh 
+source $ZSH/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 
+
 
 # User configuration
 
@@ -123,4 +111,34 @@ source ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighti
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-source ~/.profile
+# Aweme uid did 
+alias uid='echo 96197230273 ; echo 96197230273 | pbcopy'
+alias did='echo 1654139298009624 ; echo 1654139298009624 | pbcopy'
+
+[ -f "$HOME/.bytebm/config/config.sh" ] && . "$HOME/.bytebm/config/config.sh"
+
+function bswhich() {
+    if `type $1 | grep -q 'is a shell function'`; then
+        type $1
+        which $1
+    elif `type $1 | grep -q 'is an alias'`; then
+        PS4='+%x:%I>' zsh -i -x -c '' |& grep '>alias ' | grep "${1}="
+    fi
+}
+
+# pnpm
+export PNPM_HOME="/Users/bytedance/Library/pnpm"
+export PATH="$PNPM_HOME:$PATH"
+# pnpm end
+
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+export PATH="$PATH:$(go env GOPATH)/bin"
+
+[[ -s "/Users/bytedance/.gvm/scripts/gvm" ]] && source "/Users/bytedance/.gvm/scripts/gvm"
+
+export GOPATH=$HOME/go
+export PATH=$PATH:$GOPATH/bin
