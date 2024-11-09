@@ -1,0 +1,149 @@
+" ===============================================================================
+" General Configuration
+" ===============================================================================
+set nocompatible 	" 关闭兼容模式
+set history=10000
+
+" Tab and Indent
+set tabstop=4 		" 设置Tab长度为4空格
+set shiftwidth=4 	" 设置自动缩进长度为4空格
+set autoindent 		" 继承前一行的缩进方式，适用于多行注释
+set smartindent		" 根据文件中其他地方的缩进空格个数来确定一个 tab 是多少个空格
+set wildmenu    	"按TAB键时命令行自动补齐"
+
+" Search and Match
+set hlsearch  		" 高亮搜索结果
+set incsearch 		" 开启实时搜索
+set smartcase		" 如果有一个大写，则开启敏感
+set ignorecase		" 搜索时大小写不敏感
+set showmatch 		" 显示括号匹配
+
+" Display
+set cursorline 		" 突出显示当前行
+set nu 				" 设置行号
+set showmode  		" 显示当前模式
+set t_Co=256  		" If under tty, use 256
+set ruler	        " 显示当前光标位置"
+set clipboard+=unnamed  " 使用系统粘贴板
+
+" 在某些情况下,退格键backspace不管用"
+"
+" set nocompatible 	" 关闭兼容模式,这是由于vi模式中导致的backspace
+" backspace有几种工作方式，默认是vi兼容的。对新手来说很不习惯。
+"indent: 如果用了:set indent,:set ai 等自动缩进，想用退格键将字段缩进的删掉，必须设置这个选项。否则不响应。
+"eol:如果插入模式下在行开头，想通过退格键合并两行，需要设置eol。
+"start：要想删除此次插入前的输入，需设置这个。
+set backspace=indent,eol,start
+
+" Other
+set autochdir		"当前目录随着被编辑文件的改变而改变"
+set nobackup       	"表示不需要备份文件
+set noswapfile 		"表示不创建临时交换文件
+set nowritebackup 	"表示编辑的时候不需要备份文件
+set noundofile 		"表示不创建撤销文件
+
+" Bind Keys
+" 定义快捷键的前缀，即<Leader>
+let mapleader=";" 
+"  " <C-l>: quick temp disable hlsearch
+"  nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
+" ==== 系统剪切板复制粘贴 ====
+"v 模式下复制内容到系统剪切板
+vmap <Leader>c "+yy
+"n 模式下复制一行到系统剪切板
+nmap <Leader>c "+yy
+"n 模式下粘贴系统剪切板的内容
+nmap <Leader>v "+p
+"  括号自动补全
+inoremap ( ()<Esc>i
+inoremap [ []<Esc>i
+inoremap { {}<Esc>i
+inoremap " ""<Esc>i
+inoremap ' ''<Esc>i
+
+" tab 标签页切换快捷键: ;1即代表切换到标签页1; idea中使用 command-> <- 进行左右 tab
+:nn <space>1 1gt
+:nn <space>2 2gt
+:nn <space>3 3gt
+:nn <space>4 4gt
+:nn <space>5 5gt
+:nn <space>6 6gt
+:nn <space>7 7gt
+:nn <space>8 8gt
+:nn <space>9 8gt
+:nn <space>0 :tablast<CR>
+:nn <space>h gT  "切换标签页
+:nn <space>l gt
+
+" vim中切换窗口快捷键:即Ctr+w hjkl -> ;hjkl 用于分离窗口的切换
+:nn <leader>w <C-w>w
+:nn <leader>h <C-w>h
+:nn <leader>j <C-w>j
+:nn <leader>k <C-w>k
+:nn <leader>l <C-w>l
+
+
+syntax enable
+syntax on                    " 开启文件类型侦测
+filetype on
+filetype plugin indent on    " 启用自动补全
+
+" 退出插入模式指定类型的文件自动保存
+au InsertLeave *.go,*.sh,*.php write
+
+" ===============================================================================
+" " IdeaVim Configuration
+" "
+" ===============================================================================
+" Closing tabs
+nnoremap <leader>q :action CloseContent<cr>
+nnoremap <leader>Q :action ReopenClosedTab<cr>
+
+" Splits manipulation
+nmap <leader>ss :action SplitHorizontally<cr>
+nmap <leader>sv :action SplitVertically<cr>
+nmap <leader>sc :action Unsplit<cr>
+nmap <leader>sC :action UnsplitAll<cr>
+
+" General Search & Repalce
+nnoremap <Leader>f :action ReformatCode<CR>
+nnoremap <Leader>g :action FindInPath<CR>
+vnoremap <Leader>g :action FindInPath<CR>
+nnoremap <Leader>r :action RenameElement<CR>
+nnoremap <Leader>o :action RecentProjectListGroup<CR>
+nnoremap <Leader>co :action CloseOtherProjects<CR>
+"noremap ' <ESC>:action Replace<cr>
+"noremap g' <ESC>:action ReplaceInPath<cr>
+
+" Go to somewhere (g in normal mode for goto somewhere)
+nnoremap <C-o> :action Back<CR>
+nnoremap <C-i> :action Forward<cr>
+nnoremap ga :action GotoAction<CR>
+nnoremap gc :action GotoClass<CR>
+nnoremap gd :action GotoDeclaration<CR>
+nnoremap gs :action GotoSuperMethod<CR>
+nnoremap gi :action GotoImplementation<CR>
+nnoremap gf :action GotoFile<CR>
+nnoremap gm :action GotoSymbol<CR>
+"nnoremap gl :action JumpToLastChange<CR>
+nnoremap gu :action ShowUsages<CR>
+nnoremap gt :action GotoTest<CR>
+nnoremap gr :action RecentFiles<CR>
+
+" Code Editing
+nnoremap q :action ShowIntentionActions<CR>
+nnoremap cc :action CommentByLineComment<CR>
+vnoremap cc :action CommentByLineComment<CR>
+
+" Jump Project Windows
+nnoremap <space>j :action PreviousProjectWindow<CR>
+nnoremap <space>k :action NextProjectWindow<CR>
+
+" GitBlame
+nnoremap <leader>a :action Annotate<cr>
+
+" IdeaVim Extension
+set keep-english-in-normal 
+set NERDTree
+
+" vap va}
