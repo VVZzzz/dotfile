@@ -355,8 +355,8 @@ https://github.com/vim-airline/vim-airline
 
 
 
-## TODO
-将dotfile文件总结备份到GitHub
+## VSCode
+打开 github 账户同步
 
 
 
