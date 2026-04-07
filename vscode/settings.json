@@ -1,0 +1,146 @@
+{
+    "vim.autoSwitchInputMethod.enable": true,
+    "vim.autoSwitchInputMethod.defaultIM": "com.apple.keylayout.ABC",
+    "vim.autoSwitchInputMethod.obtainIMCmd": "/opt/homebrew/bin/im-select",
+    "vim.autoSwitchInputMethod.switchIMCmd": "/opt/homebrew/bin/im-select com.apple.keylayout.ABC",
+
+    "window.newWindowProfile": "默认",
+    "vim.leader": ";",
+    "vim.useSystemClipboard": true,
+    "vim.visualstar": true,
+    "vim.highlightedyank.enable": true,
+    "vim.hlsearch": true,
+    "vim.normalModeKeyBindings": [
+        {
+            "before": [
+                "<C-o>"
+            ],
+            "commands": [
+                "workbench.action.navigateBack",
+            ]
+        },
+        {
+            "before": [
+                "<C-i>"
+            ],
+            "commands": [
+                "workbench.action.navigateForward",
+            ]
+        },
+        {
+            "before": [
+                "<space>",
+                "h"
+            ],
+            "after": [
+                "g",
+                "T"
+            ]
+        },
+        {
+            "before": [
+                "<space>",
+                "l"
+            ],
+            "after": [
+                "g",
+                "t"
+            ]
+        },
+        {
+            "before": [
+                "g",
+                "f"
+            ],
+            "commands": [
+                "workbench.action.quickOpen",
+            ]
+        },
+        {
+            "before": [
+                "g",
+                "i"
+            ],
+            "commands": [
+                "editor.action.goToImplementation",
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "o"
+            ],
+            "commands": [
+                "workbench.action.openRecent",
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "l"
+            ],
+            "commands": [
+                "workbench.action.focusRightGroup"
+            ]
+
+        },
+        {
+            "before": [
+                "<leader>",
+                "h"
+            ],
+            "commands": [
+                "workbench.action.focusLeftGroup"
+            ]
+
+        },
+        {
+            "before": [
+                "q"
+            ],
+            "commands": [
+                "editor.action.quickFix"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "r"
+            ],
+            "commands": [
+                "editor.action.rename"
+            ]
+
+        },
+    ],
+    "go.alternateTools": {
+        "go.lintOnSave": "off",
+        "gopls": "trae-gopls"
+    },
+    "go.toolsEnvVars": {
+
+        "GOMEMLIMIT": "24GiB"
+    },
+    // 核心配置：让VSCode Go插件所有命令都禁用cgo
+    "go.envVars": {
+    "CGO_ENABLED": "0"
+    },
+    "editor.fontSize": 14,
+    "workbench.colorTheme": "Gruvbox Dark Hard",
+    "vim.foldfix": true,
+    "git.confirmSync": false,
+    "git.enableSmartCommit": true,
+    "window.restoreWindows": "one",
+    "git.autofetch": true,
+    "trae.searchEverywhere.enabled": true,
+    "gopls": {
+        "ui.semanticTokens": true,
+        "ui.codelenses": {
+            "implementation": true
+        },
+        "hoverClickableSymbols": true,
+        "ui.navigation.importShortcut": "Definition",
+        "detailedCompletionLabels": true
+    },
+    "git.blame.statusBarItem.enabled": true,
+}
