@@ -3,7 +3,6 @@
     "vim.autoSwitchInputMethod.defaultIM": "com.apple.keylayout.ABC",
     "vim.autoSwitchInputMethod.obtainIMCmd": "/opt/homebrew/bin/im-select",
     "vim.autoSwitchInputMethod.switchIMCmd": "/opt/homebrew/bin/im-select com.apple.keylayout.ABC",
-
     "window.newWindowProfile": "默认",
     "vim.leader": ";",
     "vim.useSystemClipboard": true,
@@ -82,7 +81,6 @@
             "commands": [
                 "workbench.action.focusRightGroup"
             ]
-
         },
         {
             "before": [
@@ -92,7 +90,6 @@
             "commands": [
                 "workbench.action.focusLeftGroup"
             ]
-
         },
         {
             "before": [
@@ -110,7 +107,15 @@
             "commands": [
                 "editor.action.rename"
             ]
-
+        },
+        {
+            "before": [
+                "<leader>",
+                "a"
+            ],
+            "commands": [
+                "gitlens.toggleFileBlame:key"
+            ]
         },
     ],
     "go.alternateTools": {
@@ -118,12 +123,14 @@
         "gopls": "trae-gopls"
     },
     "go.toolsEnvVars": {
-
         "GOMEMLIMIT": "24GiB"
     },
+    //"go.languageServerFlags": [
+    //    "-remote=unix;/tmp/gopls-shared.sock"
+    //],
     // 核心配置：让VSCode Go插件所有命令都禁用cgo
     "go.envVars": {
-    "CGO_ENABLED": "0"
+        "CGO_ENABLED": "0"
     },
     "editor.fontSize": 14,
     "workbench.colorTheme": "Gruvbox Dark Hard",
@@ -138,9 +145,39 @@
         "ui.codelenses": {
             "implementation": true
         },
-        "hoverClickableSymbols": true,
+        //"hoverClickableSymbols": true,
         "ui.navigation.importShortcut": "Definition",
-        "detailedCompletionLabels": true
+        //"detailedCompletionLabels": true
     },
     "git.blame.statusBarItem.enabled": true,
+    "git.blame.editorDecoration.enabled": true,
+    "gitlens.blame.format": "${author|8?} ${date|8-}",
+    "gitlens.blame.dateFormat": "YYYY-MM-DD",
+    "search.exclude": {
+        "**/node_modules": true,
+        "**/bower_components": true,
+        "**/*.code-search": true,
+        "**/.eden-mono": true
+    },
+    "remote.autoForwardPortsSource": "hybrid",
+    "remote.extensionKind": {
+        "kang.vim-auto-input-method": [
+            "ui"
+        ]
+    },
+    "files.watcherExclude": {
+        "**/.git/objects/**": true,
+        "**/.git/subtree-cache/**": true,
+        "**/node_modules/*/**": true,
+        "**/vendor/**": true,
+        "**/go/pkg/mod/**": true,
+        "**/tmp/**": true,
+        "**/build/**": true
+    },
+    "gomod.focusMode": false,
+    "gomod.autoReveal": false,
+    "files.autoSave": "onWindowChange",
+    "AI.toolcall.v2.command.allowList": "[\"cd\",\"go\"]",
+    "remote.SSH.enhancedCompatibilityMode": true,
+    "go-helper.enableTraeGopls": false,
 }
